@@ -3,7 +3,19 @@
 [SAE J3016 - Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles](https://www.sae.org/standards/content/j3016_202104/)
 
 
-Before creating a pull request, please serialize all TTL files. Being in the serializer_and_hygiene folder run
+Before creating a pull request:
+
+1. Check hygiene...
+
+Being in the serializer_and_hygiene folder run
+
+```
+python hygiene.py -i "../../ontology-autonomous-driving" -t "hygiene"
+```
+
+2. Serialize all TTL files. 
+
+Being in the serializer_and_hygiene folder run
 
 ```
 python serialize.py -t "../../ontology-autonomous-driving"
