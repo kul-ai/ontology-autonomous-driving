@@ -29,7 +29,7 @@ python serialize.py -t "../../ontology-autonomous-driving"
 ```
 ## Acknowledgements
 
-The research was supported by the [National Science Centre]https://www.ncn.gov.pl/en, Poland (HARMONIA, UMO-2017/26/M/HS1/01092). The project's principal investigator was Piotr Kulicki (KUL, Lublin).
+The research was supported by the [National Science Centre](https://www.ncn.gov.pl/en), Poland (HARMONIA, UMO-2017/26/M/HS1/01092). The project's principal investigator was Piotr Kulicki (KUL, Lublin).
 
 We are grateful to Barry Smith and the BFO team for the opportunity to discuss the ways in which our ontology was based on the BFO. A dedicated seminar took place in Buffalo on April 2022.
 
