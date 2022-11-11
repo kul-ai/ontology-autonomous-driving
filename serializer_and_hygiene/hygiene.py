@@ -3,7 +3,7 @@
 """
 Created on Thu Nov 11 07:44:53 2022
 Modified on Mo Nov 11 08:14:00 2022
-@author: trypuzr
+@author: robert@trypuz.pl
 """
             
 import os
