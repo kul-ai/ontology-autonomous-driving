@@ -3,6 +3,9 @@
 ## SAE J3016
 [SAE J3016 - Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles](https://www.sae.org/standards/content/j3016_202104/)
 
+## BFO 2022
+
+An ontology of autonomous driving is complient with [BFO 2022 (ISO/IEC 21838-2:2021)](https://basic-formal-ontology.org/bfo-2020.html).
 
 ## Contributing 
 Before creating a pull request:
