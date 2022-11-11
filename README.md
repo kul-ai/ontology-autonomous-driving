@@ -1,8 +1,10 @@
 # An ontology of autonomous driving based on the SAE J3016 standard
 
+## SAE J3016
 [SAE J3016 - Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles](https://www.sae.org/standards/content/j3016_202104/)
 
 
+## Contributing 
 Before creating a pull request:
 
 1. Check hygiene...
@@ -22,3 +24,10 @@ Being in the serializer_and_hygiene folder run
 ```
 python serialize.py -t "../../ontology-autonomous-driving"
 ```
+## Acknowledgements
+
+The research was supported by the [National Science Centre]https://www.ncn.gov.pl/en, Poland (HARMONIA, UMO-2017/26/M/HS1/01092). The project's principal investigator was Piotr Kulicki (KUL, Lublin).
+
+We are grateful to Barry Smith and the BFO team for the opportunity to discuss the ways in which our ontology was based on the BFO. A dedicated seminar took place in Buffalo on April 2022.
+
+We want to also thank to the [Automotive Ontology Working Group](https://www.w3.org/community/gao/) for reviewing the first version of our ontology for AV. 
