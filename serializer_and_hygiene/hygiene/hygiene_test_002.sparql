@@ -1,0 +1,26 @@
+# Created on Fri Dec  4 13:11:39 2020
+# @author: trypuzr
+
+
+prefix xsd:   <http://www.w3.org/2001/XMLSchema#> 
+prefix owl:   <http://www.w3.org/2002/07/owl#> 
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+
+SELECT DISTINCT ?error
+WHERE {
+  ?e a ?c .
+  FILTER NOT EXISTS {
+    ?e owl:deprecated "true"^^xsd:boolean
+  }
+  FILTER (?c in (owl:Class,
+          owl:ObjectProperty,
+          owl:AnnotationProperty,
+          owl:DatatypeProperty,
+          owl:NamedIndividual))
+  FILTER NOT EXISTS {
+    ?e skos:definition ?def .
+  }
+  FILTER CONTAINS(str(?e),"http")  
+  BIND (concat ("ERROR: ", str(?e), " has to have definition") AS ?error)
+}

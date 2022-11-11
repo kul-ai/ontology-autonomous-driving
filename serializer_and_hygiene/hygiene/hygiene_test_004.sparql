@@ -1,0 +1,23 @@
+# Created on Fri Dec  4 13:11:39 2020
+# @author: trypuzr
+
+prefix xsd:   <http://www.w3.org/2001/XMLSchema#> 
+prefix owl:   <http://www.w3.org/2002/07/owl#> 
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
+
+SELECT DISTINCT ?error
+WHERE {
+  ?e a ?c .
+  FILTER NOT EXISTS {
+    ?e owl:deprecated "true"^^xsd:boolean
+  }
+  FILTER (?c in (owl:Class,
+          owl:ObjectProperty,
+          owl:AnnotationProperty,
+          owl:DatatypeProperty,
+          owl:NamedIndividual))
+  ?e rdfs:label ?label.
+  FILTER (lang(?label) = "") 
+  FILTER CONTAINS(str(?e),"http") 
+  BIND (concat ("WARN: ", str(?e), " has to have label with lang tag en") AS ?error)
+}

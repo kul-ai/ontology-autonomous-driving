@@ -1,0 +1,25 @@
+# Created on Fri Dec  4 13:11:39 2020
+# @author: trypuzr
+
+
+prefix xsd:   <http://www.w3.org/2001/XMLSchema#> 
+prefix owl:   <http://www.w3.org/2002/07/owl#> 
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix dcterms: <http://purl.org/dc/terms/>
+ 
+SELECT DISTINCT ?error
+WHERE {
+  ?e a ?c .
+  FILTER NOT EXISTS {
+    ?e owl:deprecated "true"^^xsd:boolean
+  }
+  FILTER (?c in (owl:ObjectProperty,
+          owl:DatatypeProperty))
+  FILTER NOT EXISTS {
+    ?e rdfs:domain ?domain ;
+       rdfs:range ?range .
+  }
+  FILTER CONTAINS(str(?e),"http") 
+  BIND (concat ("WARN: ", str(?e), " has to have a domain and a range") AS ?error)
+}
