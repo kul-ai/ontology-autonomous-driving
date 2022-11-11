@@ -27,6 +27,17 @@ Being in the serializer_and_hygiene folder run
 ```
 python serialize.py -t "../../ontology-autonomous-driving"
 ```
+
+## License
+
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-shield]][cc-by]
+
+[cc-by]: https://creativecommons.org/licenses/by-nc-nd/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%20NC%20ND%204.0-lightgrey.svg
+
 ## Acknowledgements
 
 The research was supported by the [National Science Centre](https://www.ncn.gov.pl/en), Poland (HARMONIA, UMO-2017/26/M/HS1/01092). The project's principal investigator was Piotr Kulicki (KUL, Lublin).
