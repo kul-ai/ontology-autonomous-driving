@@ -13,6 +13,8 @@ Being in the serializer_and_hygiene folder run
 python hygiene.py -i "../../ontology-autonomous-driving" -t "hygiene"
 ```
 
+The hygiene testing is based on ontology testing procedure worked out by the [FIBO community](https://github.com/edmcouncil/fibo).
+
 2. Serialize all TTL files. 
 
 Being in the serializer_and_hygiene folder run
