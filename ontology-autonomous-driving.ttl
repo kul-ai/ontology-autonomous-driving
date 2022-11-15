@@ -16,7 +16,7 @@ av: a owl:Ontology ;
 SAE document ID: J3016 (JUN2018, APR2021)."""@en ;
     dct:creator "Piotr Kulicki",
         "Robert Trypuz" ;
-    dct:license "To be agreed with SAE"@en ;
+    dct:license "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"@en ;
     owl:imports <http://purl.obolibrary.org/obo/bfo/2020/bfo.owl> ;
     owl:versionIRI av:0.0.8 .
 
@@ -223,7 +223,7 @@ av:DDTFallbackReadyUser a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:DDTFallbackReadyUserRole ] ) ] ;
     skos:definition "person that has the DDT fallback-ready user role"@en ;
@@ -242,7 +242,7 @@ av:DDTFallbackReadyUserRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:isReceptiveTo ;
                                 owl:someValuesFrom [ a owl:Class ;
                                         owl:unionOf ( av:DDTPerformanceRelevantSystemFailure av:RequestToIntervene ) ] ] ) ] ],
@@ -264,6 +264,7 @@ av:DDTPerformanceRelevantSystemFailure a owl:Class ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
+    rdfs:subClassOf obo:BFO_0000015 ;
     skos:definition "a malfunction in DAS and/or other vehicle system that prevents the DAS from reliably performing the portion of the DDT on a sustained basis, including the complete DDT, that it would otherwise perform"@en ;
     AnnotationVocabulary:adaptedFrom "J3016 APR2021, section 3.17",
         "J3016 JUN2018, section 3.18"@en ;
@@ -383,7 +384,7 @@ av:DriverlessOperation a owl:Class ;
                                                     owl:unionOf ( av:InVehicleDDTFallbackReadyUser [ a owl:Class ;
                                                                 owl:complementOf av:HumanDriver ] ) ] ] [ a owl:Restriction ;
                                             owl:allValuesFrom [ a owl:Class ;
-                                                    owl:complementOf av:Human ] ;
+                                                    owl:complementOf av:Person ] ;
                                             owl:onProperty av:isOccupiedBy ] ) ] ) ] ],
         [ a owl:Restriction ;
             owl:onProperty av:isPerformedBy ;
@@ -420,7 +421,7 @@ av:DriverlessOperationDispatcher a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:DriverlessOperationDispatcherRole ] ) ] ;
     skos:definition "person that has the driverless operation dispatcher role"@en ;
@@ -439,7 +440,7 @@ av:DriverlessOperationDispatcherRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:performs ;
                                 owl:someValuesFrom av:DispatchInDriverlessOperation ] ) ] ],
         av:HumanUserRole ;
@@ -531,12 +532,12 @@ av:DynamicDrivingSubtask a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000176 ;
+            owl:onProperty obo:BFO_0000175 ;
             owl:someValuesFrom av:DynamicDrivingTask ],
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty obo:BFO_0000177 ;
+                    owl:onProperty obo:BFO_0000175 ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( av:DrivingAutomationSystem av:HumanDriver ) ] ] ],
         obo:BFO_0000034 ;
@@ -549,16 +550,16 @@ av:DynamicDrivingTask a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000110 ;
+            owl:onProperty obo:BFO_0000174 ;
             owl:someValuesFrom av:LateralMotionControl ],
         [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000110 ;
+            owl:onProperty obo:BFO_0000174 ;
             owl:someValuesFrom av:LongitudinalMotionControl ],
         [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000110 ;
+            owl:onProperty obo:BFO_0000174 ;
             owl:someValuesFrom av:Monitor ],
         [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000110 ;
+            owl:onProperty obo:BFO_0000174 ;
             owl:someValuesFrom av:ObjectAndEventDetectionAndResponse ],
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
@@ -597,6 +598,10 @@ av:DynamicDrivingTaskFallback a owl:Class ;
             owl:unionOf ( av:MinimalRiskConditionAchievement [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000055 ;
                         owl:someValuesFrom av:DynamicDrivingTask ] ) ],
+        [ a owl:Restriction ;
+            owl:onProperty obo:BFO_0000062 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( av:DDTPerformanceRelevantSystemFailure av:OperationalDesignDomainExit ) ] ],
         [ a owl:Restriction ;
             owl:onProperty av:isPerformedBy ;
             owl:someValuesFrom [ a owl:Class ;
@@ -745,18 +750,6 @@ av:HighDrivingAutomation a owl:Class ;
         "A level 4 ADS feature capable of performing the entire DDT during sustained operation on a motorway or freeway (i.e., within its ODD). (Note: The presence of a user in the driver’s seat who is capable of performing the DDT is envisioned in this example, as driver performance of the DDT would have been necessary before entering, and would again be necessary after leaving, the motorway or freeway. Thus, such a feature would alert the user that s/he should resume vehicle operation shortly before exiting the ODD, but if the user fails to respond to such an alert, the ADS will nevertheless perform the DDT fallback and achieve a minimal risk condition automatically.)"@en,
         "A level 4 ADS feature capable of performing the entire DDT during valet parking (i.e., curb-to-door or vice versa) without any driver supervision."@en .
 
-av:Human a owl:Class ;
-    rdfs:label "human"@en ;
-    dc:contributor "Piotr Kulicki",
-        "Robert Trypuz"@en ;
-    dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
-    dct:creator "Robert Trypuz" ;
-    dct:modified "2022-11-11T10:48:00"^^xsd:dateTime ;
-    rdfs:comment "2022-11-11T10:48:00 (Robert Trypuz): Person has been changed to Human."@en ;
-    rdfs:isDefinedBy <http://wordnetweb.princeton.edu/perl/webwn?o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&s=human> ;
-    rdfs:subClassOf obo:BFO_0000030 ;
-    skos:definition "any living or extinct member of the family Hominidae characterized by superior intelligence, articulate speech, and erect carriage"@en .
-
 av:HumanDriver a owl:Class ;
     rdfs:label "human driver"@en ;
     dc:contributor "Piotr Kulicki",
@@ -764,7 +757,7 @@ av:HumanDriver a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:HumanDriverRole ] ) ] ;
     skos:definition "person that has the human driver role"@en ;
@@ -783,7 +776,7 @@ av:HumanDriverRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:performs ;
                                 owl:someValuesFrom [ a owl:Class ;
                                         owl:unionOf ( av:DynamicDrivingTaskFallback [ a owl:Restriction ;
@@ -804,7 +797,7 @@ av:HumanUser a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:HumanUserRole ] ) ] ;
     skos:definition "person that has human user role"@en ;
@@ -823,7 +816,7 @@ av:HumanUserRole a owl:Class ;
             owl:someValuesFrom av:SustainedOperationOfVehicle ],
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
-            owl:someValuesFrom av:Human ],
+            owl:someValuesFrom av:Person ],
         obo:BFO_0000023 ;
     skos:definition "the (human) role that is realized in the sustained operation of a vehicle"@en ;
     AnnotationVocabulary:adaptedFrom "J3016 APR2021, section 3.31",
@@ -838,7 +831,7 @@ av:InVehicleDDTFallbackReadyUser a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:InVehicleDDTFallbackReadyUserRole ] ) ] ;
     skos:definition "person that has the in-vehicle fallback-ready user role"@en ;
@@ -862,7 +855,7 @@ av:InVehicleDriver a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:InVehicleDriverRole ] ) ] ;
     skos:definition "person that has the in-vehicle driver role"@en ;
@@ -883,7 +876,7 @@ av:InVehicleDriverRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:manuallyOperates ;
                                 owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
         av:HumanDriverRole ;
@@ -1202,7 +1195,7 @@ av:PassangerRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Class ;
+                    owl:intersectionOf ( av:Person [ a owl:Class ;
                                 owl:complementOf [ a owl:Restriction ;
                                         owl:onProperty av:operates ;
                                         owl:someValuesFrom av:ConventionalVehicle ] ] ) ] ],
@@ -1221,12 +1214,25 @@ av:Passenger a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:PassangerRole ] ) ] ;
     skos:definition "person that has the passanger role"@en ;
     AnnotationVocabulary:adaptedFrom "J3016 APR2021, section 3.31.2",
         "J3016 JUN2018, section 3.29.2"@en .
+
+av:Person a owl:Class ;
+    rdfs:label "person"@en ;
+    dc:contributor "Piotr Kulicki",
+        "Robert Trypuz"@en ;
+    dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
+    dct:creator "Robert Trypuz" ;
+    dct:modified "2022-11-11T10:48:00"^^xsd:dateTime ;
+    rdfs:comment "2022-11-11T10:48:00 (Robert Trypuz): Person has been changed to Human."@en ;
+    rdfs:isDefinedBy <http://wordnetweb.princeton.edu/perl/webwn?o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&s=human> ;
+    rdfs:subClassOf obo:BFO_0000030 ;
+    skos:altLabel "human"@en ;
+    skos:definition "any living or extinct member of the family Hominidae characterized by superior intelligence, articulate speech, and erect carriage"@en .
 
 av:ProvidingConveyanceOnPublicRoads a owl:Class ;
     rdfs:label "providing conveyance on public roads"@en ;
@@ -1244,7 +1250,7 @@ av:RemoteAssistant a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:RemoteAssistantRole ] ) ] ;
     skos:definition "person that has the remote assistent role"@en .
@@ -1262,7 +1268,7 @@ av:RemoteAssistantRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:performs ;
                                 owl:someValuesFrom av:RemoteAssistence ] ) ] ],
         av:HumanUserRole ;
@@ -1298,7 +1304,7 @@ av:RemoteDriver a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:RemoteDriverRole ] ) ] ;
     skos:definition "person that has the remote driver role"@en ;
@@ -1318,7 +1324,7 @@ av:RemoteDriverRole a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Human [ a owl:Restriction ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:remotelyOperates ;
                                 owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
         av:HumanDriverRole ;
@@ -1356,7 +1362,7 @@ av:RemoteFallbackReadyUser a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( av:Human [ a owl:Restriction ;
+            owl:intersectionOf ( av:Person [ a owl:Restriction ;
                         owl:onProperty obo:BFO_0000196 ;
                         owl:someValuesFrom av:RemoteFallbackReadyUserRole ] ) ] ;
     skos:definition "person that has the remote fallback-ready user role"@en ;
@@ -1469,7 +1475,7 @@ av:Trip a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000121 ;
+            owl:onProperty obo:BFO_0000117 ;
             owl:someValuesFrom av:OperateMotorVehicle ],
         obo:BFO_0000015 ;
     skos:definition "the traversal of an entire travel pathway by a vehicle from the point of origin to a destination"@en ;
@@ -1484,7 +1490,7 @@ av:VehicleSystem a owl:Class ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty av:isEquippedOn ;
+            owl:onProperty obo:BFO_0000175 ;
             owl:someValuesFrom av:MotorVehicle ],
         obo:BFO_0000030 ;
     skos:definition "a system (i.e., the hardware and software) that is part of (is equipped on) a motor vehicle and is capable of performing driving relevant tasks"@en .
@@ -1570,6 +1576,7 @@ av:isEquippedOn a owl:ObjectProperty ;
     rdfs:domain av:VehicleSystem ;
     rdfs:range av:MotorVehicle ;
     rdfs:subPropertyOf obo:BFO_0000175 ;
+    owl:deprecated true ;
     owl:inverseOf av:isEquippedWith ;
     skos:definition "relates a vehicle system with a motor vehicle"@en .
 
@@ -1602,7 +1609,7 @@ av:isPerformedBy a owl:ObjectProperty ;
     dct:creator "Robert Trypuz" ;
     rdfs:domain obo:BFO_0000015 ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( av:DrivingAutomationSystem av:Human ) ] ;
+            owl:unionOf ( av:DrivingAutomationSystem av:Person ) ] ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     owl:inverseOf av:performs ;
     skos:altLabel "has agent"@en ;
@@ -1643,7 +1650,7 @@ av:manuallyOperates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Human ;
+    rdfs:domain av:Person ;
     rdfs:range av:ConventionalVehicle ;
     rdfs:subPropertyOf av:operates ;
     owl:propertyDisjointWith av:remotelyOperates ;
@@ -1657,7 +1664,7 @@ av:operates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Human ;
+    rdfs:domain av:Person ;
     rdfs:range av:MotorVehicle ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     skos:definition "indicates a motor vehicle a human operates"@en .
@@ -1669,7 +1676,7 @@ av:performs a owl:ObjectProperty ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( av:DrivingAutomationSystem av:Human ) ] ;
+            owl:unionOf ( av:DrivingAutomationSystem av:Person ) ] ;
     rdfs:range obo:BFO_0000015 ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     skos:altLabel "is agent of"@en ;
@@ -1681,7 +1688,7 @@ av:remotelyOperates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Human ;
+    rdfs:domain av:Person ;
     rdfs:range av:ConventionalVehicle ;
     rdfs:subPropertyOf av:operates ;
     skos:definition "not sitting in a position that allows manual exercising in-vehicle braking, accelerating, steering, and transmission gear selection input devices (if any) but being able to operate the vehicle"@en ;
@@ -1735,8 +1742,6 @@ AnnotationVocabulary:explanatoryNote a owl:AnnotationProperty .
 AnnotationVocabulary:synonym a owl:AnnotationProperty .
 
 AnnotationVocabulary:usageNote a owl:AnnotationProperty .
-
-obo:BFO_0000015 owl:equivalentClass av:DDTPerformanceRelevantSystemFailure .
 
 [] owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger .
 
