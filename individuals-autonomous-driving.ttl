@@ -1,0 +1,80 @@
+@prefix : <https://onto.kul.pl/av/inst/> .
+@prefix ns1: <http://purl.obolibrary.org/obo/> .
+@prefix ns2: <https://onto.kul.pl/av/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+: a owl:Ontology ;
+    owl:imports ns2:0.0.9 .
+
+ns1:BFO_0000054 a owl:AnnotationProperty .
+
+ns1:BFO_0000062 a owl:AnnotationProperty .
+
+ns1:BFO_0000066 a owl:AnnotationProperty .
+
+ns1:BFO_0000132 a owl:AnnotationProperty .
+
+ns1:BFO_0000167 a owl:AnnotationProperty .
+
+ns1:BFO_0000197 a owl:AnnotationProperty .
+
+:i1 a owl:NamedIndividual,
+        ns2:AutomatedDrivingSystem ;
+    rdfs:label "Automated Driving System (ADS) 1"@en ;
+    ns2:performs :i2 .
+
+:i10 a owl:NamedIndividual,
+        ns2:MinimalRiskCondition ;
+    rdfs:label "Minimal risk condition 1"@en .
+
+:i2 a owl:NamedIndividual,
+        ns2:ConditionalDrivingAutomation ;
+    rdfs:label "Conditional Driving Automation process 1"@en ;
+    ns1:BFO_0000132 :i8 ;
+    ns1:BFO_0000167 :i3,
+        :i4 .
+
+:i3 a owl:NamedIndividual,
+        ns2:ADSEquippedVehicle ;
+    rdfs:label "ADS equipped vehicle 1"@en ;
+    ns2:isEquippedWith :i1 .
+
+:i4 a owl:NamedIndividual,
+        ns2:Person ;
+    rdfs:label "Person 1"@en ;
+    ns2:isReceptiveTo :i9 ;
+    ns2:performs :i7 .
+
+:i5 a owl:NamedIndividual,
+        ns2:DDTFallbackReadyUserRole ;
+    rdfs:label "DDT fallback-ready user role 1"@en ;
+    ns1:BFO_0000054 :i2 ;
+    ns1:BFO_0000197 :i4 .
+
+:i6 a owl:NamedIndividual,
+        ns2:HumanDriverRole ;
+    rdfs:label "human driver role 1"@en ;
+    ns1:BFO_0000054 :i7 ;
+    ns1:BFO_0000197 :i4 .
+
+:i7 a [ a owl:Class ;
+            owl:complementOf [ a owl:Restriction ;
+                    owl:onProperty ns1:BFO_0000055 ;
+                    owl:someValuesFrom ns2:DynamicDrivingTask ] ],
+        owl:NamedIndividual,
+        ns2:DynamicDrivingTaskFallback ;
+    rdfs:label "DDT fallback 1"@en ;
+    ns1:BFO_0000062 :i9 ;
+    ns1:BFO_0000132 :i8 ;
+    ns2:resultsIn :i10 .
+
+:i8 a owl:NamedIndividual,
+        ns2:OperateMotorVehicle ;
+    rdfs:label "Operating motor vehicle 1"@en .
+
+:i9 a owl:NamedIndividual,
+        ns2:DDTPerformanceRelevantSystemFailure ;
+    rdfs:label "DDT performance-relevant system failure 1"@en ;
+    ns1:BFO_0000066 :i1 .
+
