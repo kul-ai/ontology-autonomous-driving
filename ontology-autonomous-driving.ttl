@@ -229,6 +229,7 @@ av:isReceptiveTo rdf:type owl:ObjectProperty ;
 
 ###  https://onto.kul.pl/av/isResultOf
 av:isResultOf rdf:type owl:ObjectProperty ;
+              owl:inverseOf av:resultsIn ;
               rdfs:domain obo:BFO_0000020 ;
               rdfs:range obo:BFO_0000015 ;
               dc:contributor "Piotr Kulicki" ,
@@ -236,7 +237,7 @@ av:isResultOf rdf:type owl:ObjectProperty ;
               dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
               dct:creator "Robert Trypuz" ;
               rdfs:label "is result of"@en ;
-              skos:definition "indicates the result of the process"@en .
+              skos:definition "indicates the process that caused the result"@en .
 
 
 ###  https://onto.kul.pl/av/manuallyOperates
@@ -299,6 +300,16 @@ av:remotelyOperates rdf:type owl:ObjectProperty ;
                     skos:definition "not sitting in a position that allows manual exercising in-vehicle braking, accelerating, steering, and transmission gear selection input devices (if any) but being able to operate the vehicle"@en ;
                     AnnotationVocabulary:adaptedFrom "J3016 APR2021, section 3.31.1.2" ,
                                                      "J3016 JUN2018, section 3.29.1.2"@en .
+
+
+###  https://onto.kul.pl/av/resultsIn
+av:resultsIn rdf:type owl:ObjectProperty ;
+             dc:contributor "Piotr Kulicki" ,
+                            "Robert Trypuz"@en ;
+             dct:created "2022-11-20T09:03:00"^^xsd:dateTime ;
+             dct:creator "Robert Trypuz" ;
+             rdfs:label "results in"@en ;
+             skos:definition "indicates the result of the process"@en .
 
 
 #################################################################
