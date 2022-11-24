@@ -35,7 +35,7 @@
     av:performs :i7 .
 
 :i5 a owl:NamedIndividual,
-        av:DDTFallbackReadyUserRole ;
+        av:InVehicleDDTFallbackReadyUserRole ;
     rdfs:label "DDT fallback-ready user role 1"@en ;
     obo:BFO_0000054 :i2 ;
     obo:BFO_0000197 :i4 .
