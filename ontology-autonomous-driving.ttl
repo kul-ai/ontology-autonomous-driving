@@ -821,12 +821,6 @@ av:HumanUserRole a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000054 ;
             owl:someValuesFrom av:SustainedOperationOfVehicle ],
-        [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000197 ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
-                                owl:onProperty av:occupies ;
-                                owl:someValuesFrom av:MotorVehicle ] ) ] ],
         obo:BFO_0000023 ;
     skos:definition "the (human) role that is realized in the sustained operation of a vehicle"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31",
@@ -854,7 +848,15 @@ av:InVehicleDDTFallbackReadyUserRole a owl:Class ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:subClassOf av:DDTFallbackReadyUserRole ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty obo:BFO_0000197 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
+                                owl:onProperty av:isSeatedInDriverSeatIn ;
+                                owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                                owl:onProperty av:occupies ;
+                                owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
+        av:DDTFallbackReadyUserRole ;
     skos:definition "a DDT fallback-ready user role that inheres in a DDT fallback-ready user who is seated in the driver’s seat"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31.3.1" .
 
@@ -888,6 +890,12 @@ av:InVehicleDriverRole a owl:Class ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:manuallyOperates ;
+                                owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty obo:BFO_0000197 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( av:Person [ a owl:Restriction ;
+                                owl:onProperty av:occupies ;
                                 owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
         av:HumanDriverRole ;
     skos:definition "a human driver role that is realized in no automation driving by a driver who manually operates a conventional vehicle"@en ;
@@ -1386,7 +1394,14 @@ av:RemoteFallbackReadyUserRole a owl:Class ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:subClassOf av:DDTFallbackReadyUserRole ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty obo:BFO_0000197 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( av:Person [ a owl:Class ;
+                                owl:complementOf [ a owl:Restriction ;
+                                        owl:onProperty av:occupies ;
+                                        owl:someValuesFrom av:ConventionalVehicle ] ] ) ] ],
+        av:DDTFallbackReadyUserRole ;
     skos:definition "a DDT fallback-ready user role that inheres in a DDT fallback-ready user of a Level 3 ADS-equipped vehicle in driverless operation who is not in the driver’s seat"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31.3.2" .
 
@@ -1662,6 +1677,17 @@ av:isResultOf a owl:ObjectProperty ;
     rdfs:range obo:BFO_0000015 ;
     owl:inverseOf av:resultsIn ;
     skos:definition "indicates the process that caused the result"@en .
+
+av:isSeatedInDriverSeatIn a owl:ObjectProperty ;
+    rdfs:label "is seated in driver seat in"@en ;
+    dc:contributor "Piotr Kulicki",
+        "Robert Trypuz"@en ;
+    dct:created "2022-11-24T11:21:00"^^xsd:dateTime ;
+    dct:creator "Robert Trypuz" ;
+    rdfs:domain av:HumanUser ;
+    rdfs:range av:MotorVehicle ;
+    rdfs:subPropertyOf av:occupies ;
+    skos:definition "indicates that a human user is seated in the driver's seat in the motor vehicle"@en .
 
 av:manuallyOperates a owl:ObjectProperty ;
     rdfs:label "manually operates"@en ;
