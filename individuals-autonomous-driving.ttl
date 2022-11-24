@@ -5,7 +5,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 : a owl:Ontology ;
-    owl:imports av:0.0.9 .
+    owl:imports av: .
 
 :i1 a owl:NamedIndividual,
         av:AutomatedDrivingSystem ;

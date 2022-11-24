@@ -1198,17 +1198,18 @@ av:PassangerRole a owl:Class ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000054 ;
-            owl:someValuesFrom av:SustainedOperationOfVehicle ],
-        [ a owl:Restriction ;
-            owl:onProperty obo:BFO_0000197 ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( av:Person [ a owl:Class ;
-                                owl:complementOf [ a owl:Restriction ;
-                                        owl:onProperty av:operates ;
-                                        owl:someValuesFrom av:ConventionalVehicle ] ] ) ] ],
-        av:HumanUserRole ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( av:HumanUserRole [ a owl:Restriction ;
+                        owl:onProperty obo:BFO_0000054 ;
+                        owl:someValuesFrom av:SustainedOperationOfVehicle ] [ a owl:Restriction ;
+                        owl:onProperty obo:BFO_0000197 ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( av:Person [ a owl:Class ;
+                                            owl:complementOf [ a owl:Restriction ;
+                                                    owl:onProperty av:operates ;
+                                                    owl:someValuesFrom av:MotorVehicle ] ] [ a owl:Restriction ;
+                                            owl:onProperty av:occupies ;
+                                            owl:someValuesFrom av:MotorVehicle ] ) ] ] ) ] ;
     skos:definition "a user in a vehicle who has no role in the operation of that vehicle"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31.2",
         "J3016 JUN2018, section 3.29.2"@en ;
@@ -1614,6 +1615,7 @@ av:isOccupiedBy a owl:ObjectProperty ;
     dct:creator "Robert Trypuz" ;
     rdfs:domain av:MotorVehicle ;
     rdfs:range av:HumanUser ;
+    owl:inverseOf av:occupies ;
     skos:definition "indicates the occupants of vehicle"@en .
 
 av:isPerformedBy a owl:ObjectProperty ;
@@ -1673,6 +1675,16 @@ av:manuallyOperates a owl:ObjectProperty ;
     skos:definition "manual exercising in-vehicle braking, accelerating, steering, and transmission gear selection input devices in order to operate a vehicle"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31.1.1",
         "J3016 JUN2018, section 3.29.1.1"@en .
+
+av:occupies a owl:ObjectProperty ;
+    rdfs:label "occupies"@en ;
+    dc:contributor "Piotr Kulicki",
+        "Robert Trypuz"@en ;
+    dct:created "2022-11-24T09:09:00"^^xsd:dateTime ;
+    dct:creator "Robert Trypuz" ;
+    rdfs:domain av:HumanUser ;
+    rdfs:range av:MotorVehicle ;
+    skos:definition "indicates the vehicle the human user occupies"@en .
 
 av:operates a owl:ObjectProperty ;
     rdfs:label "operates"@en ;
