@@ -497,6 +497,10 @@ av:DrivingAutomationSystem a owl:Class ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( av:DynamicDrivingSubtask av:DynamicDrivingTask ) ] ] ;
             owl:onProperty av:performs ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass av:OperationalDesignDomain ;
+            owl:onProperty obo:BFO_0000196 ],
         av:VehicleSystem ;
     skos:altLabel "driving automation technology"@en ;
     skos:definition "the hardware and software that are collectively capable of performing part or all of the DDT on a sustained basis"@en ;
@@ -853,8 +857,6 @@ av:InVehicleDDTFallbackReadyUserRole a owl:Class ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( av:Person [ a owl:Restriction ;
                                 owl:onProperty av:isSeatedInDriverSeatIn ;
-                                owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
-                                owl:onProperty av:occupies ;
                                 owl:someValuesFrom av:ConventionalVehicle ] ) ] ],
         av:DDTFallbackReadyUserRole ;
     skos:definition "a DDT fallback-ready user role that inheres in a DDT fallback-ready user who is seated in the driver’s seat"@en ;
@@ -1166,7 +1168,7 @@ av:OperationalDesignDomain a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom av:DrivingAutomationSystem ],
-        obo:BFO_0000020 ;
+        obo:BFO_0000019 ;
     skos:definition "operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics"@en ;
     fibo:abbreviation "ODD" ;
     fibo:adaptedFrom "J3016 APR2021, section 3.21",
@@ -1399,7 +1401,7 @@ av:RemoteFallbackReadyUserRole a owl:Class ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( av:Person [ a owl:Class ;
                                 owl:complementOf [ a owl:Restriction ;
-                                        owl:onProperty av:occupies ;
+                                        owl:onProperty av:isSeatedInDriverSeatIn ;
                                         owl:someValuesFrom av:ConventionalVehicle ] ] ) ] ],
         av:DDTFallbackReadyUserRole ;
     skos:definition "a DDT fallback-ready user role that inheres in a DDT fallback-ready user of a Level 3 ADS-equipped vehicle in driverless operation who is not in the driver’s seat"@en ;
@@ -1685,7 +1687,7 @@ av:isSeatedInDriverSeatIn a owl:ObjectProperty ;
     dct:created "2022-11-24T11:21:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
     rdfs:domain av:HumanUser ;
-    rdfs:range av:MotorVehicle ;
+    rdfs:range av:ConventionalVehicle ;
     rdfs:subPropertyOf av:occupies ;
     skos:definition "indicates that a human user is seated in the driver's seat in the motor vehicle"@en .
 
