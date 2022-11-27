@@ -886,7 +886,8 @@ av:InVehicleDriverRole a owl:Class ;
     dct:creator "Robert Trypuz" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000054 ;
-            owl:someValuesFrom av:NoDrivingAutomation ],
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( av:DriverSupport av:NoDrivingAutomation ) ] ],
         [ a owl:Restriction ;
             owl:onProperty obo:BFO_0000197 ;
             owl:someValuesFrom [ a owl:Class ;
@@ -1697,9 +1698,10 @@ av:manuallyOperates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Person ;
+    rdfs:domain av:HumanUser ;
     rdfs:range av:ConventionalVehicle ;
-    rdfs:subPropertyOf av:operates ;
+    rdfs:subPropertyOf av:isSeatedInDriverSeatIn,
+        av:operates ;
     owl:propertyDisjointWith av:remotelyOperates ;
     skos:definition "manual exercising in-vehicle braking, accelerating, steering, and transmission gear selection input devices in order to operate a vehicle"@en ;
     fibo:adaptedFrom "J3016 APR2021, section 3.31.1.1",
@@ -1721,7 +1723,7 @@ av:operates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Person ;
+    rdfs:domain av:HumanUser ;
     rdfs:range av:MotorVehicle ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     skos:definition "indicates a motor vehicle a human operates"@en .
@@ -1745,7 +1747,7 @@ av:remotelyOperates a owl:ObjectProperty ;
         "Robert Trypuz"@en ;
     dct:created "2021-08-19T14:10:00"^^xsd:dateTime ;
     dct:creator "Robert Trypuz" ;
-    rdfs:domain av:Person ;
+    rdfs:domain av:HumanUser ;
     rdfs:range av:ConventionalVehicle ;
     rdfs:subPropertyOf av:operates ;
     skos:definition "not sitting in a position that allows manual exercising in-vehicle braking, accelerating, steering, and transmission gear selection input devices (if any) but being able to operate the vehicle"@en ;
